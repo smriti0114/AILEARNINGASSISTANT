@@ -22,6 +22,7 @@ const LoginPage = () => {
       setLoading(true);
       try {
         const { token, user } = await authService.login(email, password);
+        localStorage.setItem("token", token); 
         login(user, token);
         toast.success('Logged in successfully!');
         navigate('/dashboard');
@@ -112,7 +113,7 @@ const LoginPage = () => {
                 <button
                   onClick={handleSubmit}
                   disabled={loading}
-                  className="group relative w-full h-12 bg-linear-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 active:scale-[0.98] text-white text-sm font-semibold rounded-xl transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-emerald-500/20 disabled:capacity-50 disabled:cursor-not-allowed disabled:active:scale-100 shadow-lg shadow-emerald-500/25 overflow-hidden"
+                  className="group relative w-full h-12 bg-linear-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 active:scale-[0.98] text-white text-sm font-semibold rounded-xl transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-emerald-500/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 shadow-lg shadow-emerald-500/25 overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     {loading ? (
@@ -135,7 +136,7 @@ const LoginPage = () => {
                 <div className="mt-8 pt-6 border-t border-slate-200/60">
                   <p className="text-center text-sm text-slate-600">
                      Don't have an account?{' '}
-                     <Link to='/register' className="fonr-semibold text-emerald-600 hover:text-emerald-700 transition-colors duration-200">
+                     <Link to='/register' className="font-semibold text-emerald-600 hover:text-emerald-700 transition-colors duration-200">
                        Sign up
                      </Link>
                   </p>
