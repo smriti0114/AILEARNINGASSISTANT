@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 
 import documentService from "../../services/documentService";
 import Spinner from "../../components/common/Spinner";
+import Button from '../../components/common/Button';
 
 
 const DocumentListPage = () => {
@@ -101,20 +102,20 @@ const DocumentListPage = () => {
        {/* Subtle background pattern */}
        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-size-[16px_16px] opacity-30 pointer-events-none" />
 
-       <div className="">
+       <div className="relative max-w-7xl mx-auto">
          {/* Header */}
-         <div className="">
+         <div className="flex items-center justify-between mb-10">
             <div>
-              <h1 className="">
+              <h1 className="text-2xl font-medium text-slate-900 tracking-tight mb-2">
                 My Documents
               </h1>
-              <p className="">
+              <p className="text-slate-500 text-sm">
                 Manage and organize your learning materials
               </p>
             </div>
             {documents.length > 0 && (
               <Button onClick={() => setIsUploadModalOpen(true)}>
-                <Plus className="" strokeWidth={2.5} />
+                <Plus className="w-4 h-4" strokeWidth={2.5} />
                 Upload Document
               </Button>
             )}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Button = (
+const Button = ({
     children,
     onClick,
     type='button',
@@ -8,7 +8,7 @@ const Button = (
     className='',
     variant='primary',
     size='md'
-) => {
+}) => {
     const baseStyles= 'inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 whitespace-nowrap';
 
     const variantStyles= {
