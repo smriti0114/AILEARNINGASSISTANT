@@ -56,7 +56,7 @@ const ChatInterface = () => {
       const response = await aiService.chat(documentId, userMessage.content);
       const assistantMessage = {
         role: "assistant",
-        content: response.data.data.answer,
+        content: response?.data?.data?.answer || "No response",
         timestamp: new Date(),
         relevantChunks: response.data.relevantChunks,
       };

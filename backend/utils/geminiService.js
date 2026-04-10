@@ -195,7 +195,7 @@ Answer:`;
       model: "gemini-2.5-flash-lite",
       contents: prompt,
     });
-    const generatedText = response.text;
+    const generatedText = response?.candidates?.[0]?.content?.parts?.[0]?.text || "";
     return generatedText;
   } catch (error) {
     console.error("Gemini API error:", error);
@@ -222,7 +222,7 @@ ${context.substring(0, 10000)}`;
       model: "gemini-2.5-flash-lite",
       contents: prompt,
     });
-    const generatedText = response.text;
+    const generatedText = response.text;  
     return generatedText;
   } catch (error) {
     console.error("Gemini API error:", error);
