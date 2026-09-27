@@ -148,7 +148,7 @@ export const deleteFlashcardSet= async(req, res, next) => {
 
         await flashcardSet.deleteOne();
 
-        req.status(200).json({
+        res.status(200).json({
             success: true,
             message: 'Flashcard set deleted successfully'
         });

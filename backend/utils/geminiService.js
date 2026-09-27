@@ -103,7 +103,7 @@ export const generateQuiz= async(text, numQuestions=5) => {
 
     try {
     const response = await ai.models.generateContent({
-    model: "gemini-2.5-flash-lite",
+    model: "gemini-2.5-flash",
     contents: prompt,
     });
 
@@ -160,10 +160,10 @@ export const generateSummary = async (text) => {
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash-lite",
+      model: "gemini-2.5-flash",
       contents: prompt,
     });
-    const generatedText = response.candidates?.[0]?.content?.parts?.[0]?.text || "";
+    const generatedText = response.text;
     return generatedText;
   } catch (error) {
     console.error("Gemini API error:", error);
@@ -192,10 +192,10 @@ Answer:`;
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash-lite",
+      model: "gemini-2.5-flash",
       contents: prompt,
     });
-    const generatedText = response?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+    const generatedText = response.text;
     return generatedText;
   } catch (error) {
     console.error("Gemini API error:", error);
@@ -219,7 +219,7 @@ ${context.substring(0, 10000)}`;
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash-lite",
+      model: "gemini-2.5-flash",
       contents: prompt,
     });
     const generatedText = response.text;  
