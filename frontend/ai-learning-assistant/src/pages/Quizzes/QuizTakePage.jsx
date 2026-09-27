@@ -85,7 +85,7 @@ const QuizTakePage = () => {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
-          <p className="text-slate-600 text-lg">
+          <p className="text-muted text-lg">
             Quiz not found or has no questions.
           </p>
         </div>
@@ -104,16 +104,16 @@ const QuizTakePage = () => {
       {/* Progress Bar */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-semibold text-slate-700">
+          <span className="text-sm font-semibold text-body">
             Question {currentQuestionIndex + 1} of {quiz.questions.length}
           </span>
-          <span className="text-sm font-medium text-slate-500">
+          <span className="text-sm font-medium text-muted">
             {answeredCount} answered
           </span>
         </div>
-        <div className="relative h-2 bg-slate-100 rounded-full overflow-hidden">
+        <div className="relative h-2 bg-page rounded-full overflow-hidden">
           <div
-            className="absolute inset-y-0 left-0 bg-linear-to-r from-emerald-500 to-teal-500 rounded-full transition-all duration-500 ease-out"
+            className="absolute inset-y-0 left-0 bg-primary rounded-full transition-all duration-500 ease-out"
             style={{
               width: `${((currentQuestionIndex + 1) / quiz.questions.length) * 100}%`,
             }}
@@ -122,15 +122,15 @@ const QuizTakePage = () => {
       </div>
 
       {/* Question Card */}
-      <div className="bg-white/80 backdrop-blur-xl border-2 border-slate-200 rounded-2xl shadow-xl shadow-slate-200/50 p-6 mb-8">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-xl mb-6">
-          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-          <span className="text-sm font-semibold text-emerald-700">
+      <div className="bg-surface/80 backdrop-blur-xl border-2 border-border-subtle rounded-2xl shadow-xl shadow-border-subtle/50 p-6 mb-8">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-subtle border border-emerald-200 rounded-xl mb-6">
+          <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+          <span className="text-sm font-semibold text-primary-dark">
             Question {currentQuestionIndex + 1}
           </span>
         </div>
 
-        <h3 className="text-lg font-semibold text-slate-700 mb-6 leading-relaxed">
+        <h3 className="text-lg font-semibold text-body mb-6 leading-relaxed">
           {currentQuestion.question}
         </h3>
 
@@ -143,8 +143,8 @@ const QuizTakePage = () => {
                 key={index}
                 className={`group relative flex items-center p-3 border-2 rounded-xl cursor-pointer transition-all duration-200 ${
                   isSelected
-                    ? "border-emerald-500 bg-emerald-50 shadow-lg shadow-emerald-500/10"
-                    : "border-slate-200 bg-slate-50/50 hover:border-slate-300 hover:bg-white hover:shadow-md"
+                    ? "border-primary bg-primary-subtle shadow-lg shadow-primary/10"
+                    : "border-border-subtle bg-page/50 hover:border-border-subtle hover:bg-surface hover:shadow-md"
                 }`}
               >
                 <input
@@ -162,13 +162,13 @@ const QuizTakePage = () => {
                 <div
                   className={`shrink-0 w-5 h-5 rounded-full border-2 transition-all duration-200 ${
                     isSelected
-                      ? "border-emerald-500 bg-emerald-500"
-                      : "border-slate-300 bg-white group-hover:border-emerald-400"
+                      ? "border-primary bg-primary"
+                      : "border-border-subtle bg-surface group-hover:border-primary"
                   }`}
                 >
                   {isSelected && (
                     <div className="w-full h-full flex items-center justify-center">
-                      <div className="w-2 h-2 bg-white rounded-full" />
+                      <div className="w-2 h-2 bg-surface rounded-full" />
                     </div>
                   )}
                 </div>
@@ -178,7 +178,7 @@ const QuizTakePage = () => {
                   className={`ml-4 text-sm font-medium transition-colors duration-200 ${
                     isSelected
                       ? "text-emerald-900"
-                      : "text-slate-700 group-hover:text-slate-900"
+                      : "text-body group-hover:text-navy"
                   }`}
                 >
                   {option}
@@ -187,7 +187,7 @@ const QuizTakePage = () => {
                 {/* Selected Checkmark */}
                 {isSelected && (
                   <CheckCircle2
-                    className="ml-auto w-5 h-5 text-emerald-500"
+                    className="ml-auto w-5 h-5 text-primary"
                     strokeWidth={2.5}
                   />
                 )}
@@ -209,11 +209,11 @@ const QuizTakePage = () => {
         </Button>
 
         {currentQuestionIndex === quiz.questions.length - 1 ? (
-          <button onClick={handleSubmitQuiz} disabled={submitting} className="group relative px-8 h-12 bg-linear-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold text-sm rounded-xl transition-all duration-200 shadow-lg shadow-emerald-500/25 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 overflow-hidden">
+          <button onClick={handleSubmitQuiz} disabled={submitting} className="group relative px-8 h-12 bg-primary hover:bg-primary-hover text-surface font-semibold text-sm rounded-xl transition-all duration-200 shadow-lg shadow-primary/25 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 overflow-hidden">
             <span className="relative z-10 flex items-center justify-center gap-2">
               {submitting ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <div className="w-4 h-4 border-2 border-surface/30 border-t-surface rounded-full animate-spin" />
                   Submitting...
                 </>
               ) : (
@@ -223,7 +223,7 @@ const QuizTakePage = () => {
                 </>
               )}
             </span>
-            <div className="absolute inset-0 bg-linear-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full tansition-transform duration-700 " />
+            <div className="absolute inset-0 bg-surface/10 -translate-x-full group-hover:translate-x-full tansition-transform duration-700 " />
           </button>
         ) : (
           <Button onClick={handleNextQuestion} disabled={submitting}>
@@ -248,10 +248,10 @@ const QuizTakePage = () => {
               disabled={submitting}
               className={`w-8 h-8 rounded-lg font-semibold text-xs transition-all duration-200 ${
                 isCurrent
-                  ? "bg-linear-to-r from-emerald-500 to-teal-500 text-white shadow-lg shadow-emerald-500/25 scale-110"
+                  ? "bg-primary text-surface shadow-lg shadow-primary/25 scale-110"
                   : isAnsweredQuestion
-                    ? "bg-emerald-100 text-emerald-700 hover:bg-emerald-200"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                    ? "bg-primary-light text-primary-dark hover:bg-emerald-200"
+                    : "bg-page text-muted hover:bg-border-subtle"
               } disabled:opacity-50 disabled:cursor-not-allowed`}
             >
               {index + 1}

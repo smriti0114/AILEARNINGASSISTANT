@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import LoginPage from './pages/Auth/LoginPage';
 import RegisterPage from './pages/Auth/RegisterPage';
 import NotFoundPage from './pages/NotFoundPage';
+import LandingPage from './pages/LandingPage';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import DashboardPage from './pages/Dashboard/DashboardPage.jsx';
 import DocumentListPage from './pages/Documents/DocumentListPage';
@@ -13,10 +14,12 @@ import QuizTakePage from './pages/Quizzes/QuizTakePage';
 import QuizResultPage from './pages/Quizzes/QuizResultPage';
 import ProfilePage from './pages/Profile/ProfilePage';
 import { useAuth } from './context/AuthContext';
-
+import SplashCursor from './components/SplashCursor';
+import { useDeviceCapabilities } from './hooks/useDeviceCapabilities';
 
 const App = () => {
   const {isAuthenticated, loading} = useAuth();
+  const { reducedMotion, isTouchDevice } = useDeviceCapabilities();
 
   if(loading){
     return (
@@ -27,7 +30,22 @@ const App = () => {
   }
 
   return(
-      <Router>
+      <>
+        {!reducedMotion && !isTouchDevice && (
+          <SplashCursor
+            DENSITY_DISSIPATION={3.5}
+            VELOCITY_DISSIPATION={2}
+            PRESSURE={0.1}
+            CURL={3}
+            SPLAT_RADIUS={0.2}
+            SPLAT_FORCE={6000}
+            COLOR_UPDATE_SPEED={10}
+            SHADING={true}
+            RAINBOW_MODE={false}
+            COLOR="#6366F1"
+          />
+        )}
+        <Router>
         <Routes>
           <Route
             path="/"
@@ -35,7 +53,7 @@ const App = () => {
               isAuthenticated ? (
                <Navigate to="/dashboard" replace/>
                ) : (
-               <Navigate to="/login" replace/>
+               <LandingPage />
                )
             }
           />
@@ -57,7 +75,8 @@ const App = () => {
 
           <Route path="*" element={<NotFoundPage/>}/>
         </Routes>
-      </Router>         
+      </Router>
+      </>
   );
 }
 

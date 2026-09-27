@@ -100,7 +100,7 @@ const QuizManager = ({ documentId }) => {
   };
 
   return (
-    <div className="bg-white border border-neutral-200 rounded-lg p-6">
+    <div className="bg-surface border border-neutral-200 rounded-lg p-6">
       <div className="flex justify-end gap-2 mb-4">
         <Button onClick={() => setIsGenerateModalOpen(true)}>
           <Plus size={16} />
@@ -129,7 +129,7 @@ const QuizManager = ({ documentId }) => {
               }
               min="1"
               required
-              className="w-full h-9 px-3 border-neutral-200 rounded-lg bg-white text-sm text-neutral-900 placeholder-neutral-400 transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-[#00d492] focus:border-transparent"
+              className="w-full h-9 px-3 border-neutral-200 rounded-lg bg-surface text-sm text-neutral-900 placeholder-neutral-400 transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-[#00d492] focus:border-transparent"
             />
           </div>
           <div className="flex justify-end gap-2 pt-2">

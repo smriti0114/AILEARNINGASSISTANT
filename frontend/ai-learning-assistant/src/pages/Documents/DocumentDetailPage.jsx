@@ -58,7 +58,7 @@ const DocumentDetailPage = () => {
     const pdfUrl = getPdfUrl();
 
     return (
-      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden shadow-sm">
+      <div className="bg-surface border border-gray-300 rounded-lg overflow-hidden shadow-sm">
         <div className="flex items-center justify-between p-4 bg-gray-50 border-b border-gray-300">
           <span className="text-sm font-medium text-gray-700">Document Viewer</span>
           <a
@@ -74,7 +74,7 @@ const DocumentDetailPage = () => {
         <div className="bg-gray-100 p-1">
           <iframe
             src={pdfUrl}
-            className="w-full h-[70vh] bg-white rounded border border-gray-300"
+            className="w-full h-[70vh] bg-surface rounded border border-gray-300"
             title="PDF Viewer"
             frameBorder="0"
             style={{

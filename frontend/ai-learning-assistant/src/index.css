@@ -1,16 +1,95 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
-@theme{
-  --font-display:"Urbanist", sans-serif;
-  --breakpoint-3xl: 1920px;
-  --color-primary: #FF9324;
+@layer base {
+  :root {
+    --font-display: "Urbanist", sans-serif;
+    
+    /* Primary Colors */
+    --color-primary: #6366F1;
+    --color-primary-hover: #4F46E5;
+    --color-primary-dark: #4338CA;
+    --color-primary-light: #E0E7FF;
+    --color-primary-subtle: #EEF2FF;
+    
+    /* Accent Colors */
+    --color-accent: #06B6D4;
+    --color-accent-hover: #0891B2;
+    --color-accent-light: #CFFAFE;
+    --color-accent-subtle: #ECFEFF;
+
+    /* Text & Background - Light Mode */
+    --color-navy: #0F172A;
+    --color-body: #334155;
+    --color-muted: #64748B;
+    --color-page: #F8FAFC;
+    --color-surface: #FFFFFF;
+    --color-border-subtle: #E2E8F0;
+    
+    /* Status Colors */
+    --color-success: #22C55E;
+    --color-warning: #F59E0B;
+    --color-error: #EF4444;
+
+    /* Dotted Background Pattern */
+    --pattern-color: rgba(0, 0, 0, 0.35);
+  }
+
+  .dark {
+    /* Text & Background - Dark Mode */
+    --color-page: #0f172a;
+    --color-surface: #1e293b;
+    --color-body: #f8fafc;
+    --color-navy: #ffffff;
+    --color-muted: #94a3b8;
+    --color-border-subtle: #334155;
+    
+    /* Primary Colors - Dark Mode Adjustments */
+    --color-primary: #818cf8;
+    --color-primary-hover: #6366f1;
+    --color-primary-dark: #4f46e5;
+
+    /* Dotted Background Pattern */
+    --pattern-color: rgba(148, 163, 184, 0.25);
+  }
+
+  html {
+    font-family: var(--font-display);
+  }
+  body {
+    background-color: var(--color-page);
+    color: var(--color-body);
+  }
 }
-@layer base{
-  html{
-    font-family:var(--font-display);
+
+@layer components {
+  .bg-dotted {
+    background-image: radial-gradient(var(--pattern-color) 1px, transparent 1px);
+    background-size: 16px 16px;
   }
-  body{
-    background-color: #fcfbfc;
-  }
+}
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-subtle: var(--color-primary-subtle);
+  
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-light: var(--color-accent-light);
+  --color-accent-subtle: var(--color-accent-subtle);
+
+  --color-navy: var(--color-navy);
+  --color-body: var(--color-body);
+  --color-muted: var(--color-muted);
+  
+  --color-page: var(--color-page);
+  --color-surface: var(--color-surface);
+  --color-border-subtle: var(--color-border-subtle);
+  
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
 }
